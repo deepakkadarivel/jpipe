@@ -18,7 +18,7 @@ node {
 
   // Start a docker container using the golang:1.8.0-alpine image, mount the current directory to the goPath we specified earlier
   stage("Create binaries") {
-    docker.image("golang:1.8.0-alpine").inside("-v ${pwd()}:${goPath}") {
+    sudo docker.image("golang:1.8.0-alpine").inside("-v ${pwd()}:${goPath}") {
       for (command in binaryBuildCommands) {
         // build the Mac x64 binary
         sh "cd ${goPath} && GOOS=darwin GOARCH=amd64 go build -o binaries/amd64/${buildNumber}/darwin/${applicationName}-${buildNumber}.darwin.amd64"
