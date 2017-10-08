@@ -6,7 +6,7 @@ node {
 
     // Export environment variables pointing to the directory where Go was installed
     withEnv(["GOROOT=${root}", "PATH+GO=${root}/bin"]) {
-        sh 'go version'
+        shell 'go version'
     }
 
     // Checkout the code from Github, stages allow Jenkins to visualize the different sections of your build steps in the UI
